@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdatePermission;
 use App\Models\Permission;
 use Exception;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class PermissionController extends Controller
         return view('admin.permissions.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreUpdatePermission $request)
     {
         try {
             $data = $request->all();
@@ -54,13 +55,16 @@ class PermissionController extends Controller
     public function edit(string $id)
     {
         $permission = Permission::find($id);
+        if (!$permission) {
+            return redirect()->route('permissions.view')->with('error', 'Registro não encontrado!');
+        }
         return view('admin.permissions.edit', compact('permission'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreUpdatePermission $request, string $id)
     {
         try {
             $permission = Permission::find($id);

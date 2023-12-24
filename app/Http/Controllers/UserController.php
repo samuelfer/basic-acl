@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateUser;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
@@ -24,10 +26,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles'));
     }
 
-    public function store(Request $request)
+    public function store(StoreUpdateUser $request)
     {
         try {
             $data = $request->all();
@@ -56,13 +59,16 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('users.view')->with('error', 'Registro não encontrado!');
+        }
         return view('admin.users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreUpdateUser $request, string $id)
     {
         try {
             $user = User::find($id);
