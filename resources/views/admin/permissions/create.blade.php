@@ -28,8 +28,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Descrição</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Digite a descrição">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Digite a descrição">
                     </div>
                     
                 </div>
