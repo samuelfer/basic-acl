@@ -321,13 +321,21 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'Usuários',
-            'route'  => 'admin.users.index',
+            'route'=> 'users.view',
             'icon' => 'fas fa-fw fa-user',
+            'can'  => 'users.view'
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'text' => 'Perfis',
+            'url'  => 'admin.perfis.index',
             'icon' => 'fas fa-fw fa-lock',
+            'can'  => 'roles.view'
+        ],
+        [
+            'text' => 'Permissoes',
+            'url'  => 'admin.permissoes.index',
+            'icon' => 'fas fa-fw fa-lock',
+            'can'  => 'permissions.view'
         ],
         [
             'text'    => 'Configurações',
