@@ -3,7 +3,7 @@
 @section('title', 'Lista de Permissões')
 
 @section('content_header')
-<h1 class="m-0 text-dark">Lista de Permissões</h1>
+    <h1 class="m-0 text-dark">Lista de Permissões</h1>
 @stop
 
 @section('content')
@@ -61,3 +61,29 @@
 
 
 @stop
+
+@section('scripts')
+
+<script>
+
+    $("alert-success").on("click", function() {
+        $("alert-success").fadeOut("slow");
+    });
+
+    // var element = document.querySelector('.alert-success'); 
+
+    // function fadeOut(element) {
+    //     var el = document.getElementById('msg-success');
+    //     console.log('Cheguei');
+    //     setInterval(function() {
+    //         var opacity = el.style.opacity;
+    //         if (opacity > 0) {
+    //             opacity -= 0.1;
+    //             el.style.opacity = opacity;
+    //         }
+    //     }, 50);
+    // }
+
+    // fadeOut(element);
+
+</script>
