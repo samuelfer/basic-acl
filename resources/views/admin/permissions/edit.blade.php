@@ -25,12 +25,20 @@
 
                 <div class="form-group">
                         <label for="name">Nome</label>
-                        <input type="text" class="form-control" value="{{$permission->name}}" name='name' id="name" placeholder="Digite um nome">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{$permission->name}}" name='name' 
+                            id="name" placeholder="Digite um nome">
+                            @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="description">Descrição</label>
-                        <input type="description" class="form-control" value="{{$permission->description}}" name="description" id="description" placeholder="Digite a descrição">
+                        <input type="description" class="form-control @error('description') is-invalid @enderror" 
+                            value="{{$permission->description}}" name="description" id="description" placeholder="Digite a descrição">
+                            @error('description')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                     </div>
 
                 </div>

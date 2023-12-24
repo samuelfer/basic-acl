@@ -25,12 +25,20 @@
 
                 <div class="form-group">
                         <label for="name">Nome</label>
-                        <input type="text" class="form-control" value="{{$user->name}}" name='name' id="name" placeholder="Digite um nome">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror"  value="{{$user->name}}" name='name' id="name" 
+                            placeholder="Digite um nome">
+                            @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" value="{{$user->email}}" name="email" id="email" placeholder="Digite um email">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror"  value="{{$user->email}}" name="email" id="email" 
+                            placeholder="Digite um email">
+                            @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     <div class="form-group">

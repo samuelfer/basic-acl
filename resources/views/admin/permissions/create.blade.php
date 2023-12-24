@@ -17,19 +17,26 @@
                 <h3 class="card-title">Formulário</h3>
             </div>
 
-
             <form action="{{route('permissions.store')}}" method="post" >
                 @csrf 
                 <div class="card-body">
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="name">Nome</label>
-                        <input type="text" class="form-control" name='name' id="name" placeholder="Digite um nome">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name='name' id="name" 
+                            placeholder="Digite um nome" value="{{ old('name') }}">
+                            @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="descricao">Descrição</label>
-                        <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Digite a descrição">
+                        <input type="text" class="form-control @error('descricao') is-invalid @enderror" 
+                            name="descricao" id="descricao" placeholder="Digite a descrição" value="{{ old('descricao') }}">
+                            @error('descricao')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                     </div>
                     
                 </div>
