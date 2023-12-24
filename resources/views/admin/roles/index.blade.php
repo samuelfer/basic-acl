@@ -12,6 +12,7 @@
 <div class="row">
     <div class="col-12">
         @include('shared.success-message')
+        @include('shared.error-message')
         <div class="card">
             <div class="card-header">
                 @can('roles.create')
@@ -36,9 +37,8 @@
                             <td>{{ $role->name}}</td>
                             <td>{{ $role->description}}</td>
                             <td>
-                            @can('roles.update')<a href="{{route('roles.edit',[$role->id])}}" class="btn btn-sm btn-success">Editar</a>@endcan
-                            @can('roles.delete')<a href="{{route('roles.delete',[$role->id])}}" class="btn btn-sm btn-danger">Excluir</a>@endcan
-                            
+                                @can('roles.update')<a href="{{route('roles.edit',[$role->id])}}" class="btn btn-sm btn-success">Editar</a>@endcan
+                                @can('roles.delete')<a href="{{route('roles.delete',[$role->id])}}" class="btn btn-sm btn-danger">Excluir</a>@endcan 
                             </td>
                      </tr>
 
