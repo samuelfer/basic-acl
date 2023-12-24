@@ -23,6 +23,17 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-//USERS
-Route::get('/usuarios', [App\Http\Controllers\UserController::class, 'index'])->name('admin.users.index');
+// Route::prefix('admin.')->middleware(['access.control.list'])->group(function () {
+//     Route::resource('/users', App\Http\Controllers\UserController::class);
+// });
+
+ Route::middleware(['access.control.list'])->group(function(){
+    ############## USUARIOS ###############
+     Route::get('/usuarios', [App\Http\Controllers\UserController::class, 'index'])->name('users.view');
+     Route::get('/usuarios/cadastro', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+     Route::get('/usuarios/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+     Route::post('/usuarios', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+     Route::put('/usuarios', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+     Route::delete('/usuarios', [App\Http\Controllers\UserController::class, 'update'])->name('users.delete');
+});
 
