@@ -7,7 +7,8 @@ Esta é uma aplicação ACL básica com controle de usuários, permissões e per
 - Clone o repositório(https://github.com/samuelfer/basic.git).
 - composer install.
 - Criar banco de dados
-- php artisan migrate.
-- php artisan db:seed.
-- Usando a aplicação cadastrar um usuário
+- Criar uma cópia do arquivo .env.example e colocar o nome .env e criar a configuração do banco de dados
+- php artisan migrate para criar as tabelas no banco de dados.
+- php artisan db:seed para popular as tabelas com dados iniciais.
+- Acessar com o email: admin@gmail.com e senha: 123456789. 
 - Obs: Para usar a aplicação você precisa ter o php e composer instalado
