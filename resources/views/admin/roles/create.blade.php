@@ -57,17 +57,7 @@
                             @foreach($permissions as $permission)
                                 <option value="{{ $permission->id }}">{{ $permission->name }}</option>
                             @endforeach
-                            <!-- <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option4">Option 4</option>
-                            <option value="option5">Option 5</option>
-                            <option value="option7">Option 7</option>
-                            <option value="option8">Option 8</option>
-                            <option value="option9">Option 9</option>
-                            <option value="option0">Option 10</option> -->
                         </select>
-
-
                     </div>
 
                     <div class="card-footer">
