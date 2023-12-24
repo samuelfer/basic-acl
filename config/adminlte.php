@@ -312,70 +312,37 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Home',
+            'url'         => '/home',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Configurações'],
         [
-            'text' => 'Usuários',
-            'route'=> 'users.view',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => 'users.view'
-        ],
-        [
-            'text' => 'Perfis',
-            'url'  => 'admin.perfis.index',
-            'icon' => 'fas fa-fw fa-lock',
-            'can'  => 'roles.view'
-        ],
-        [
-            'text' => 'Permissoes',
-            'url'  => 'admin.permissoes.index',
-            'icon' => 'fas fa-fw fa-lock',
-            'can'  => 'permissions.view'
-        ],
-        [
-            'text'    => 'Configurações',
+            'text'    => 'Administração',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
+                    'text' => 'Usuários',
+                    'route'=> 'users.view',
+                    'icon' => 'fas fa-fw fa-user',
+                    'can'  => 'users.view'
+                ],
+                [
                     'text' => 'Perfis',
-                    'url'  => '#',
+                    'route'  => 'roles.view',
+                    'icon' => 'fas fa-edit',
+                    'can'  => 'roles.view'
                 ],
                 [
-                    'text'    => 'Permissões',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Permissoes',
+                    'route'  => 'permissions.view',
+                    'icon' => 'fas fa-fw fa-lock',
+                    'can'  => 'permissions.view'
                 ],
             ],
         ],
-        ['header' => 'labels']
     ],
 
     /*

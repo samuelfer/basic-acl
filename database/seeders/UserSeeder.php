@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        $userTeste = User::create([
+        User::create([
             'name' => 'Teste',
             'email' => 'teste@gmail.com',
             'password' => Hash::make('123456789'),
@@ -32,8 +32,10 @@ class UserSeeder extends Seeder
             'updated_at' => now()
         ]);
 
+        
         $roles = Role::all();
 
         $userAdmin->roles()->saveMany($roles);
+
     }
 }

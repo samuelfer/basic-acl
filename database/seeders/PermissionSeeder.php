@@ -15,10 +15,13 @@ class PermissionSeeder extends Seeder
     {
         DB::table('permissions')->insert(
             [
-                ['name' => 'cadastrar_usuario'], ['name' => 'visualizar_usuario'], ['name' => 'editar_usuario'], ['name' => 'deletar_usuario'],
-                ['name' => 'cadastrar_permissao'], ['name' => 'visualizar_permissao'], ['name' => 'editar_permissao'], ['name' => 'deletar_permissao'],
-                ['name' => 'cadastrar_role'], ['name' => 'visualizar_role'], ['name' => 'editar_role'], ['name' => 'deletar_role'],
+                ['name' => 'users.view'], ['name' => 'users.edit'], ['name' => 'users.create'], ['name' => 'users.store'], 
+                ['name' => 'users.edit'], ['name' => 'users.update'], ['name' => 'users.delete'],
+                ['name' => 'permissions.view'], ['name' => 'permissions.edit'], ['name' => 'permissions.create'], 
+                ['name' => 'permissions.store'], ['name' => 'permissions.edit'], ['name' => 'permissions.update'], ['name' => 'permissions.delete'],
+                ['name' => 'roles.view'], ['name' => 'roles.edit'], ['name' => 'roles.create'], ['name' => 'roles.store'], 
+                ['name' => 'roles.edit'], ['name' => 'roles.update'], ['name' => 'roles.delete'],
             ]
-    );
+        );
     }
 }

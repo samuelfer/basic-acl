@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,11 +15,12 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('roles')->insert([
-                ['name' => 'master', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'admin', 'created_at' => now(), 'updated_at' => now()],
-                ['name' => 'consulta', 'created_at' => now(), 'updated_at' => now()]
-            ],
+       $role = Role::create(
+                ['name' => 'master', 'created_at' => now(), 'updated_at' => now()]
         );
+
+        $permissions = Permission::all();
+
+        $role->permissions()->saveMany($permissions);
     }
 }

@@ -40,7 +40,7 @@
                             <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
                             <td>{{ $user->updated_at->format('d/m/Y H:i') }}</td>
                             <td>
-                            @can('users.edit')<a href="{{route('users.edit',[$user->id])}}" class="btn btn-sm btn-success">Editar</a>@endcan
+                            @can('users.update')<a href="{{route('users.edit',[$user->id])}}" class="btn btn-sm btn-success">Editar</a>@endcan
                             @can('users.delete')<a href="{{route('users.delete',[$user->id])}}" class="btn btn-sm btn-danger">Excluir</a>>@endcan
                             
                             </td>
