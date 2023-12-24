@@ -8,5 +8,6 @@ Esta é uma aplicação ACL básica com controle de usuários, permissões e per
 - composer install.
 - Criar banco de dados
 - php artisan migrate.
+- php artisan db:seed.
 - Usando a aplicação cadastrar um usuário
 - Obs: Para usar a aplicação você precisa ter o php e composer instalado
