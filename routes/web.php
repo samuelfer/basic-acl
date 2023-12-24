@@ -35,7 +35,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::get('/permissoes/{id}', [App\Http\Controllers\PermissionController::class, 'edit'])->name('permissions.edit');
     Route::post('/permissoes', [App\Http\Controllers\PermissionController::class, 'store'])->name('permissions.store');
     Route::put('/permissoes/{id}', [App\Http\Controllers\PermissionController::class, 'update'])->name('permissions.update');
-    Route::delete('/permissoes', [App\Http\Controllers\PermissionController::class, 'update'])->name('permissions.delete');
+    Route::delete('/permissoes/{id}', [App\Http\Controllers\PermissionController::class, 'destroy'])->name('permissions.delete');
 
 
     ############## PERFIS (ROLES) ###############
@@ -44,7 +44,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::get('/perfis/{id}', [App\Http\Controllers\RoleController::class, 'edit'])->name('roles.edit');
     Route::post('/perfis', [App\Http\Controllers\RoleController::class, 'store'])->name('roles.store');
     Route::put('/perfis', [App\Http\Controllers\RoleController::class, 'update'])->name('roles.update');
-    Route::delete('/perfis', [App\Http\Controllers\RoleController::class, 'update'])->name('roles.delete');
+    Route::delete('/perfis/{id}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.delete');
 
     ############## USUARIOS ###############
      Route::get('/usuarios', [App\Http\Controllers\UserController::class, 'index'])->name('users.view');
@@ -52,7 +52,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
      Route::get('/usuarios/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
      Route::post('/usuarios', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
      Route::put('/usuarios', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
-     Route::delete('/usuarios', [App\Http\Controllers\UserController::class, 'update'])->name('users.delete');
+     Route::delete('/usuarios/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
 
 });
 
