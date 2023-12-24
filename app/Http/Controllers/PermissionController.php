@@ -80,6 +80,16 @@ class PermissionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $permission = Permission::find($id);
+        if (!$permission) {
+            return redirect()->back()->with('error', 'Registro não encontrado!');
+        }
+
+        if ($permission->roles()->count() > 0) {
+            return redirect()->back()->with('error', 'Registro não pode ser deletado!'); 
+        }
+
+        $permission->delete();
+        return redirect()->route('permissions.view')->with('success', 'Registro deletado com sucesso!');
     }
 }
