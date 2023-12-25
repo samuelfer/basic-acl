@@ -34,9 +34,11 @@ class UserController extends Controller
     {
         try {
             $data = $request->all();
-            $data['password'] = Hash::make($data['password']);
 
-            User::create($data);
+            $data['password'] = Hash::make($data['password']);
+            
+            $user = User::create($data);
+            $user->roles()->sync($request->roles);
             return redirect()->route('users.view')->with('success', 'Registro salvo com sucesso!');
 
         } catch (Exception $e) {
