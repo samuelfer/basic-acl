@@ -33,8 +33,9 @@ class RoleController extends Controller
     {
         try {
             $data = $request->all();
-        
-            Role::create($data);
+
+            $role = Role::create($data);
+            $role->permissions()->sync($request->permissions);
             return redirect()->route('roles.view')->with('success', 'Registro salvo com sucesso!');
 
         } catch (Exception $e) {
@@ -60,7 +61,8 @@ class RoleController extends Controller
         if (!$role) {
             return redirect()->route('roles.view')->with('error', 'Registro não encontrado!');
         }
-        return view('admin.roles.edit', compact('role'));
+        $permissions = Permission::all();
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -73,6 +75,7 @@ class RoleController extends Controller
             $data = $request->all();
 
             $role->update($data);
+            $role->permissions()->sync($request->permissions);
 
             return redirect()->route('roles.view')->with('success', 'Registro salvo com sucesso!');
             
