@@ -48,9 +48,12 @@
                    
                     <div class="form-group">
                         <label for="roles">Selecione os perfis</label>
-                        <select class="js-example-basic-multiple form-control" name="roles[]" multiple="multiple">
+                        <select class="js-basic-multiple form-control" name="roles[]" multiple="multiple">
                             @foreach($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @foreach($user->roles as $userRole)
+                                    <option {{ $userRole->id == $role->id ? 'selected' : '' }} 
+                                        value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
                             @endforeach
                         </select>
                     </div>
@@ -69,4 +72,15 @@
 
 </div>
 
+@stop
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('.js-basic-multiple').select2({
+                placeholder: 'Selecione os itens',
+                width: '100%'
+            });
+        });
+    </script>
 @stop

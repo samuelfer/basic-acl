@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Novo Usuário')
+@section('title', 'Novo Usuário')  
 
 @section('content_header')
 <h3></h3>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-group">
                         <label for="roles">Selecione os perfis</label>
-                        <select class="js-example-basic-multiple form-control" name="roles[]" multiple="multiple">
+                        <select class="js-basic-multiple form-control" name="roles[]" multiple="multiple">
                             @foreach($roles as $role)
                                 <option value="{{ $role->id }}">{{ $role->name }}</option>
                             @endforeach
@@ -71,7 +71,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            $('.js-example-basic-multiple').select2({
+            $('.js-basic-multiple').select2({
                 placeholder: 'Selecione os itens',
                 width: '100%'
             });

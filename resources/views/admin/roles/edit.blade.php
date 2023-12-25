@@ -47,11 +47,13 @@
                     <div class="card-header">
                         <h3 class="card-title">Associar permissões ao perfil</h3>
                     </div>
-                    <select multiple="multiple" size="10" name="duallistbox_permissions[]"
-                        title="duallistbox_permissions[]">
-
+                    <select multiple="multiple" size="10" name="permissions[]"
+                        title="permissions[]" id="permissions">
+                        
                         @foreach($permissions as $permission)
-                            <option value="{{ $permission->id }}">{{ $permission->name }}</option>
+                            @foreach($role->permissions as $rolePermission)
+                                <option {{ $rolePermission->id == $permission->id ? 'selected' : '' }} value="{{ $permission->id }}">{{ $permission->name }}</option>
+                            @endforeach
                         @endforeach
                     </select>
                 </div>
@@ -72,7 +74,7 @@
 
 @section('js')
     <script>
-        var demo1 = $('select[name="duallistbox_permissions[]"]').bootstrapDualListbox({
+        var demo1 = $('select[name="permissions[]"]').bootstrapDualListbox({
             moveSelectedLabel: 'Selecionar',
             moveAllLabel: 'Selecionar todos',
             infoText: 'Exibindo {0}',
