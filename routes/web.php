@@ -27,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //     Route::resource('/users', App\Http\Controllers\UserController::class);
 // });
 
- Route::middleware(['access.control.list'])->group(function(){
+ Route::middleware(['auth', 'access.control.list'])->group(function(){
 
     ############## PERMISSOES ###############
     Route::get('/permissoes', [App\Http\Controllers\PermissionController::class, 'index'])->name('permissions.view');
