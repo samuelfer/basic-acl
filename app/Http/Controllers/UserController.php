@@ -62,7 +62,8 @@ class UserController extends Controller
         if (!$user) {
             return redirect()->route('users.view')->with('error', 'Registro não encontrado!');
         }
-        return view('admin.users.edit', compact('user'));
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -93,14 +94,14 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
-            return redirect()->route('users.view')->with('error', 'Registro não encontrado!');
+            return redirect()->route('users.view')->with('errorDel', 'Registro não encontrado!');
         }
 
         if ($user->roles()->count() > 0  && $user->roles()->get()->contains('name', 'master')) {
-            return redirect()->route('users.view')->with('error', 'Registro não pode ser deletado!'); 
+            return redirect()->route('users.view')->with('errorDel', 'Registro não pode ser deletado!'); 
         }
 
         $user->delete();
-        return redirect()->route('users.view')->with('success', 'Registro deletado com sucesso!');
+        return redirect()->route('users.view')->with('successDel', 'Registro deletado com sucesso!');
     }
 }

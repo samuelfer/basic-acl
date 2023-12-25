@@ -3,7 +3,7 @@
 @section('title', 'Lista de Usuários')
 
 @section('content_header')
-<h1 class="m-0 text-dark">Lista de Usuários</h1>
+<h3></h3>
 @stop
 
 @section('content')
@@ -15,13 +15,15 @@
         @include('shared.error-message')
         <div class="card">
             <div class="card-header">
+            <h3 class="card-title">Lista de usuários</h3>
                 @can('users.create')
                     <a href="{{route('users.create')}}" class="btn btn-sm btn-success float-right">NOVO USUÁRIO</a>
                 @endcan     
             </div>
 
             <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
+                <table id="list-users" class="table table-bordered table-striped dataTable dtr-inline"
+                        aria-describedby="list-users">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -43,7 +45,7 @@
                         <td>
                             @can('users.update')<a href="{{route('users.edit',[$user->id])}}" class="btn btn-sm btn-success">Editar</a>@endcan
                             @can('users.delete')
-                                <form action="{{route('users.delete', $user->id)}}" method="post">
+                                <form action="{{route('users.delete', $user->id)}}" method="post" class="delete-user">
                                     @csrf 
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
@@ -69,5 +71,67 @@
     </div>
 </div>
 
+@stop
+
+
+@section('js')
+
+    @if(session('successDel'))   
+        <script>
+            Swal.fire({
+                title: "Excluído!",
+                text: <?= session('successDel')  ?>,
+                icon: "success"
+            });
+        </script>
+    @endif
+
+    @if(session('errorDel'))   
+        <script>
+            Swal.fire({
+                title: "Atenção!",
+                text: '<?= session('errorDel')  ?>',
+                icon: "warning"
+            });
+        </script>
+    @endif
+
+    <script>
+
+        $(function () {
+          
+            $("#list-users").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "search": "Pesquisar",
+                "paginate": {
+                    "next": "Próximo",
+                    "previous": "Anterior",
+                    "first": "Primeiro",
+                    "last": "Último"
+                },
+                "language": {
+                "url": '//cdn.datatables.net/plug-ins/1.13.7/i18n/pt-BR.json',
+            },
+            });
+        });
+
+        $('.delete-user').submit(function(ev) {
+            ev.preventDefault();
+
+            Swal.fire({
+                title: "Tem certeza que deseja excluir?",
+                text: "O registro será excluído!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sim, excluir!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.submit();
+                    }
+                });
+            });
+    </script>
 
 @stop

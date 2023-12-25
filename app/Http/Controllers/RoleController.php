@@ -88,14 +88,14 @@ class RoleController extends Controller
     {
         $role = Role::find($id);
         if (!$role) {
-            return redirect()->back()->with('error', 'Registro não encontrado!');
+            return redirect()->back()->with('errorDel', 'Registro não encontrado!');
         }
 
         if ($role->permissions()->count() > 0) {
-            return redirect()->back()->with('error', 'Registro não pode ser deletado!'); 
+            return redirect()->back()->with('errorDel', 'Registro não pode ser deletado!'); 
         }
 
         $role->delete();
-        return redirect()->route('roles.view')->with('success', 'Registro deletado com sucesso!');
+        return redirect()->route('roles.view')->with('successDel', 'Registro deletado com sucesso!');
     }
 }
