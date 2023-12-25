@@ -12,3 +12,8 @@ Esta é uma aplicação ACL básica com controle de usuários, permissões e per
 - php artisan db:seed para popular as tabelas com dados iniciais.
 - Acessar com o email: admin@gmail.com e senha: 123456789. 
 - Obs: Para usar a aplicação você precisa ter o php e composer instalado
+
+  <img src="https://github.com/samuelfer/basic-acl/blob/main/imagens/dashboard.png">
+  <img src="https://github.com/samuelfer/basic-acl/blob/main/imagens/permissions.png">
+  <img src="https://github.com/samuelfer/basic-acl/blob/main/imagens/roles.png">
+  <img src="https://github.com/samuelfer/basic-acl/blob/main/imagens/user-roles.png">
