@@ -1,8 +1,9 @@
-@if(session()->has('errorOp'))
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert">
-            <i class="fa fa-times"></i>
-        </button>
-        {{ session('error') }}
-    </div>
+@if(session()->has('error'))
+    @section('js')
+        <script>
+            $(document).ready(function() {
+                toastr.error("{{ session('error') }}");
+            });
+        </script>
+    @stop
 @endif

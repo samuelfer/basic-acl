@@ -410,7 +410,7 @@ return [
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '../vendor/select2/css/select2.css',
                 ],
             ],
@@ -425,8 +425,23 @@ return [
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '../vendor/bootstrap4-duallistbox/bootstrap-duallistbox.css',
+                ],
+            ],
+        ],
+        'Toasts' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '../vendor/toastr/toastr.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '../vendor/toastr/toastr.css',
                 ],
             ],
         ],
