@@ -2,10 +2,8 @@
 
 @section('title', 'Novo Usuário')
 
-
-
 @section('content_header')
-<h1 class="m-0 text-dark">Novo Usuário</h1>
+<h3></h3>
 @stop
 
 @section('content')
@@ -16,7 +14,7 @@
         @include('shared.error-message')
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Formulário</h3>
+                <h3 class="card-title">Novo Usuário</h3>
             </div>
 
 

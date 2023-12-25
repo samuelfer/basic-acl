@@ -3,7 +3,7 @@
 @section('title', 'Editar Perfil')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Editar Perfil</h1>
+<h3></h3>
 @stop
 
 @section('content')
@@ -14,7 +14,7 @@
 
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Formulário</h3>
+                <h3 class="card-title">Editar Perfil</h3>
             </div>
 
 
@@ -43,6 +43,19 @@
 
                 </div>
 
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">Associar permissões ao perfil</h3>
+                    </div>
+                    <select multiple="multiple" size="10" name="duallistbox_permissions[]"
+                        title="duallistbox_permissions[]">
+
+                        @foreach($permissions as $permission)
+                            <option value="{{ $permission->id }}">{{ $permission->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="card-footer">
                     <button type="submit" class="btn btn-success">Salvar</button>
                     <a href="{{route('roles.view')}}" type="button" class="btn btn-default">Cancelar</a>
@@ -55,4 +68,15 @@
 
 </div>
 
+@stop
+
+@section('js')
+    <script>
+        var demo1 = $('select[name="duallistbox_permissions[]"]').bootstrapDualListbox({
+            moveSelectedLabel: 'Selecionar',
+            moveAllLabel: 'Selecionar todos',
+            infoText: 'Exibindo {0}',
+            infoTextEmpty: 'Lista vazia'
+        });
+    </script>
 @stop

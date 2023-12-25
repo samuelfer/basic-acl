@@ -2,14 +2,8 @@
 
 @section('title', 'Novo Perfil')
 
-<link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-<link rel="stylesheet"
-    href="https://adminlte.io/themes/v3/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 @section('content_header')
-<h1 class="m-0 text-dark">Novo Perfil</h1>
+<h3></h3>
 @stop
 
 @section('content')
@@ -20,7 +14,7 @@
         @include('shared.error-message')
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Formulário</h3>
+                <h3 class="card-title">Novo Perfil</h3>
             </div>
 
 
@@ -66,7 +60,6 @@
                     </div>
             </form>
         </div>
-
 
     </div>
 

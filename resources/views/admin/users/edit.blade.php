@@ -3,7 +3,7 @@
 @section('title', 'Editar Usuário')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Editar Usuário</h1>
+<h3></h3>
 @stop
 
 @section('content')
@@ -14,7 +14,7 @@
 
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Formulário</h3>
+                <h3 class="card-title">Editar Usuário</h3>
             </div>
 
 
@@ -46,6 +46,14 @@
                         <input type="password" class="form-control" name="password" id="senha" placeholder="Digite a senha">
                     </div>
                    
+                    <div class="form-group">
+                        <label for="roles">Selecione os perfis</label>
+                        <select class="js-example-basic-multiple form-control" name="roles[]" multiple="multiple">
+                            @foreach($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     
                 </div>
 

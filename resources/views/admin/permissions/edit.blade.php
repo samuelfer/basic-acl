@@ -3,7 +3,7 @@
 @section('title', 'Editar Permissão')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Editar Permissão</h1>
+<h3></h3>
 @stop
 
 @section('content')
@@ -14,7 +14,7 @@
 
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Formulário</h3>
+                <h3 class="card-title">Editar Permissão</h3>
             </div>
 
 
@@ -23,7 +23,7 @@
                 @method('PUT')
                 <div class="card-body">
 
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{$permission->name}}" name='name' 
                             id="name" placeholder="Digite um nome">

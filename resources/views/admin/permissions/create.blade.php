@@ -3,7 +3,7 @@
 @section('title', 'Nova Permissão')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Nova Permissão</h1>
+<h3></h3>
 @stop
 
 @section('content')
@@ -14,7 +14,7 @@
         @include('shared.error-message')
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Formulário</h3>
+                <h3 class="card-title">Nova Permissão</h3>
             </div>
 
             <form action="{{route('permissions.store')}}" method="post" >
