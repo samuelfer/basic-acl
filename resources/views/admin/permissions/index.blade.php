@@ -29,7 +29,7 @@
                         <th>ID</th>
                             <th>NOME</th>
                             <th>DESCRIÇÃO</th>
-                            <th>AÇÕES</th>
+                            <th style="width: 20px;">AÇÕES</th>
                         </thead>
                         <tbody>
 
@@ -38,9 +38,12 @@
                             <td>{{ $permission->id}}</td>
                             <td>{{ $permission->name}}</td>
                             <td>{{ $permission->description}}</td>
-                            <td>
-                                @can('permissions.update')<a href="{{route('permissions.edit',[$permission->id])}}"
-                                    class="btn btn-sm btn-success">Editar</a>@endcan
+                            <td style="display: inline-block; width: 110px;">
+                                @can('permissions.update')
+                                    <a href="{{route('permissions.edit',[$permission->id])}}"
+                                        class="btn btn-sm btn-success float-left">Editar
+                                    </a>
+                                @endcan
                                 @can('permissions.delete')
                                 <form action="{{route('permissions.delete', $permission->id)}}" method="post" class="delete-permission">
                                     @csrf

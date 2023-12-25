@@ -33,7 +33,7 @@
                                         <th>ID</th>
                                         <th>NOME</th>
                                         <th>DESCRIÇÃO</th>
-                                        <th>AÇÕES</th>
+                                        <th style="width: 20px;">AÇÕES</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,9 +42,9 @@
                                         <td>{{ $role->id}}</td>
                                         <td>{{ $role->name}}</td>
                                         <td>{{ $role->description}}</td>
-                                        <td>
+                                        <td style="display: inline-block; width: 110px;">
                                             @can('roles.update')<a href="{{route('roles.edit',[$role->id])}}"
-                                                class="btn btn-sm btn-success">Editar</a>@endcan
+                                                class="btn btn-sm btn-success float-left">Editar</a>@endcan
                                             @can('roles.delete')
                                             <form action="{{route('roles.delete', $role->id)}}" method="post"
                                                 class="delete-role">

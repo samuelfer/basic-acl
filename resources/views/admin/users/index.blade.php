@@ -35,7 +35,7 @@
                                         <th>EMAIL</th>
                                         <th>CRIADO</th>
                                         <th>ATUALIZADO</th>
-                                        <th>AÇÕES</th>
+                                        <th style="width: 20px;">AÇÕES</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,9 +46,9 @@
                                         <td>{{ $user->email}}</td>
                                         <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
                                         <td>{{ $user->updated_at->format('d/m/Y H:i') }}</td>
-                                        <td>
+                                        <td style="display: inline-block; width: 110px;">
                                             @can('users.update')<a href="{{route('users.edit',[$user->id])}}"
-                                                class="btn btn-sm btn-success">Editar</a>@endcan
+                                                class="btn btn-sm btn-success float-left">Editar</a>@endcan
                                             @can('users.delete')
                                             <form action="{{route('users.delete', $user->id)}}" method="post"
                                                 class="delete-user">
