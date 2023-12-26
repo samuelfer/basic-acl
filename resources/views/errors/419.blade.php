@@ -1,5 +1,6 @@
 @extends('errors::minimal')
 
-@section('title', __('Page Expired'))
+@section('title', __('Página expirada'))
 @section('code', '419')
-@section('message', __('Page Expired'))
+@section('titleMessage', __('Página expirada'))
+@section('message', __('A página que você está tentando acessar expirou'))
