@@ -26,7 +26,7 @@
                 <div class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror"  value="{{$user->name}}" name='name' id="name" 
-                            placeholder="Digite um nome">
+                            placeholder="Digite um nome" required>
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror"  value="{{$user->email}}" name="email" id="email" 
-                            placeholder="Digite um email">
+                            placeholder="Digite um email" required>
                             @error('email')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror

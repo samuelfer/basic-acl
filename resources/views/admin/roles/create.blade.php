@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name='name'
-                            id="name" placeholder="Digite um nome" value="{{ old('name') }}">
+                            id="name" placeholder="Digite um nome" value="{{ old('name') }}" required>
                         @error('name')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror

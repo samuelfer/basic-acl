@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{$permission->name}}" name='name' 
-                            id="name" placeholder="Digite um nome">
+                            id="name" placeholder="Digite um nome" required>
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
