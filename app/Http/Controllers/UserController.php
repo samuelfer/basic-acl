@@ -64,8 +64,15 @@ class UserController extends Controller
         if (!$user) {
             return redirect()->route('users.view')->with('error', 'Registro não encontrado!');
         }
+
+        $idsRolesUser = [];
+        
+        foreach ($user->roles as $role) {
+            array_push($idsRolesUser, $role->id);
+        }
+
         $roles = Role::all();
-        return view('admin.users.edit', compact('user', 'roles'));
+        return view('admin.users.edit', compact('user', 'roles', 'idsRolesUser'));
     }
 
     /**
