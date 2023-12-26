@@ -62,7 +62,12 @@ class RoleController extends Controller
             return redirect()->route('roles.view')->with('error', 'Registro não encontrado!');
         }
         $permissions = Permission::all();
-        return view('admin.roles.edit', compact('role', 'permissions'));
+        $idsPermissionsRoles = [];
+        
+        foreach ($role->permissions as $permission) {
+            array_push($idsPermissionsRoles, $permission->id);
+        }
+        return view('admin.roles.edit', compact('role', 'permissions', 'idsPermissionsRoles'));
     }
 
     /**
