@@ -28,7 +28,8 @@ class StoreUpdateRole extends FormRequest
 
         if ($this->method() === 'PUT') {
             $rules = [
-                'name' => 'required|min:3|max:255|unique:roles,name,{$this->id},id'
+                'name' => 'required|min:3|max:255|unique:roles,name,'.$this->id.',id',
+                'description' => 'max:255'
             ];
         }
 

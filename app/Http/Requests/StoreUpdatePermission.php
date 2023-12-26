@@ -28,7 +28,7 @@ class StoreUpdatePermission extends FormRequest
 
         if ($this->method() === 'PUT') {
             $rules = [
-                'name' => 'required|min:3|max:255|unique:permissions,name,{$this->id},id'
+                'name' => 'required|min:3|max:255|unique:permissions,name,'.$this->id.',id'
             ];
         }
 
