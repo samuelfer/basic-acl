@@ -45,12 +45,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::delete('/perfis/{id}', [App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.delete');
 
     ############## USUARIOS ###############
-     Route::get('/usuarios', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.view');
-     Route::get('/usuarios/cadastro', [App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
-     Route::get('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('users.edit');
-     Route::post('/usuarios', [App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
-     Route::put('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('users.update');
-     Route::delete('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.delete');
+    Route::get('/usuarios', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.view');
+    Route::get('/usuarios/cadastro', [App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
+    Route::get('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('users.edit');
+    Route::post('/usuarios', [App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
+    Route::put('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('users.update');
+    Route::delete('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.delete');
+
+   ############## USUARIOS ###############
+   Route::get('/alterar-senha', [App\Http\Controllers\Admin\AlterPasswordController::class, 'index'])->name('password.index');
+   Route::post('/alterar-senha', [App\Http\Controllers\Admin\AlterPasswordController::class, 'store'])->name('password.store');
 
 });
 
