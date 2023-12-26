@@ -18,11 +18,11 @@ class AccessControlMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $routeName = $request->route()->getName();
-        // $ignorePermissions = config('accesslistexceptions')['ignore.permissions'];
+        $ignorePermissions = config('accesslistexception')['ignore.permissions'];
 
-        // if (!in_array($routeName, $ignorePermissions)) {
-        //     $this->authorize($routeName);
-        // }
+        if (!in_array($routeName, $ignorePermissions)) {
+            $this->authorize($routeName);
+        }
        
         $this->authorize($routeName);
 

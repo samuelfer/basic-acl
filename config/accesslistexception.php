@@ -1,8 +1,10 @@
 <?php
 
+//routes que desejo ignorar para que possam ser liberadas
 return [
     'ignore.permissions' => 
         [
-            //routes que desejo ignorar para que possam ser liberadas
+            'password.store',
+            'password.index',
         ]
     ];
