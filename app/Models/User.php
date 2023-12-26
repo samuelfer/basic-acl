@@ -52,11 +52,18 @@ class User extends Authenticatable
     }
 
     public function hasAnyRoles($roles) {
+       
         if (is_array($roles) || is_object($roles)) {
             foreach ($roles as $role) {
+               
                 return !!$roles->intersect($this->roles)->count();
             }
         }
+        dd($this->roles->contains('name', $roles));
         return $this->roles->contains('name', $roles);
+    }
+
+    public function isAdmin($user) {
+        return $user->roles->contains('name', 'master');
     }
 }

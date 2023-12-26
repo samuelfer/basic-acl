@@ -80,13 +80,15 @@
                 {{ csrf_field() }}
             </form>
         </li>
-        <li>
-            <a class="btn btn-default btn-flat float-right @if(!$profile_url) btn-block @endif"  href="#">
+        @can('password.store')
+        <li class="user-footer">
+            <a class="btn btn-default btn-flat float-right @if(!$profile_url) btn-block @endif"  
+                href="{{route('password.store')}}">
                 <i class="fa fa-fw fa-cog text-blue"></i>
                 Alterar senha
             </a>
         </li>
-
+        @endcan
     </ul>
 
 </li>
