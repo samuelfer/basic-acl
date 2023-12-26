@@ -1,1 +1,1 @@
-@extends('adminlte::auth.passwords.email')
+@extends('vendor.adminlte.auth.passwords.email')
