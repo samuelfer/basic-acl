@@ -43,7 +43,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::get('/perfis/cadastro', [App\Http\Controllers\RoleController::class, 'create'])->name('roles.create');
     Route::get('/perfis/{id}', [App\Http\Controllers\RoleController::class, 'edit'])->name('roles.edit');
     Route::post('/perfis', [App\Http\Controllers\RoleController::class, 'store'])->name('roles.store');
-    Route::put('/perfis', [App\Http\Controllers\RoleController::class, 'update'])->name('roles.update');
+    Route::put('/perfis/{id}', [App\Http\Controllers\RoleController::class, 'update'])->name('roles.update');
     Route::delete('/perfis/{id}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.delete');
 
     ############## USUARIOS ###############
@@ -51,7 +51,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
      Route::get('/usuarios/cadastro', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
      Route::get('/usuarios/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
      Route::post('/usuarios', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-     Route::put('/usuarios', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+     Route::put('/usuarios/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
      Route::delete('/usuarios/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
 
 });
