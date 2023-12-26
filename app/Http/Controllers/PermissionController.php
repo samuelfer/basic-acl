@@ -15,7 +15,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::all();
+        $permissions = Permission::orderBy('name')->get();
         return view('admin.permissions.index', compact('permissions'));
     }
 
@@ -87,14 +87,14 @@ class PermissionController extends Controller
         $permission = Permission::find($id);
      
         if (!$permission) {
-            return redirect()->back()->with('errorDel', 'Ocorreu um erro ao tentar excluir o registro.');
+            return redirect()->back()->with('error', 'Ocorreu um erro ao tentar excluir o registro.');
         }
 
         if ($permission->roles()->count() > 0) {
-            return redirect()->back()->with('errorDel', 'Ocorreu um erro ao tentar excluir o registro.'); 
+            return redirect()->back()->with('error', 'Ocorreu um erro ao tentar excluir o registro.'); 
         }
 
         $permission->delete();
-        return redirect()->route('permissions.view')->with('successDel', 'Registro excluído com sucesso!');
+        return redirect()->route('permissions.view')->with('success', 'Registro excluído com sucesso!');
     }
 }
