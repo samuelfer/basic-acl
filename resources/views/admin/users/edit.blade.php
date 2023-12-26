@@ -50,10 +50,8 @@
                         <label for="roles">Selecione os perfis</label>
                         <select class="js-basic-multiple form-control" name="roles[]" multiple="multiple">
                             @foreach($roles as $role)
-                                @foreach($user->roles as $userRole)
-                                    <option {{ $userRole->id == $role->id ? 'selected' : '' }} 
-                                        value="{{ $role->id }}">{{ $role->name }}</option>
-                                @endforeach
+                                <option  @if (in_array($role->id, $idsRolesUser)) selected @endif
+                                    value="{{ $role->id }}">{{ $role->name }}</option>
                             @endforeach
                         </select>
                     </div>
