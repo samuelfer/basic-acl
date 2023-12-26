@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="senha">Senha</label>
+                        <label for="senha" title="Apenas informe esse campo se deseja alterar a senha do usuário">Senha</label>
                         <input type="password" class="form-control" name="password" id="senha" placeholder="Digite a senha">
                     </div>
                    
