@@ -28,29 +28,29 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  Route::middleware(['auth', 'access.control.list'])->group(function(){
 
     ############## PERMISSOES ###############
-    Route::get('/permissoes', [App\Http\Controllers\PermissionController::class, 'index'])->name('permissions.view');
-    Route::get('/permissoes/cadastro', [App\Http\Controllers\PermissionController::class, 'create'])->name('permissions.create');
-    Route::get('/permissoes/{id}', [App\Http\Controllers\PermissionController::class, 'edit'])->name('permissions.edit');
-    Route::post('/permissoes', [App\Http\Controllers\PermissionController::class, 'store'])->name('permissions.store');
-    Route::put('/permissoes/{id}', [App\Http\Controllers\PermissionController::class, 'update'])->name('permissions.update');
-    Route::delete('/permissoes/{id}', [App\Http\Controllers\PermissionController::class, 'destroy'])->name('permissions.delete');
+    Route::get('/permissoes', [App\Http\Controllers\Admin\PermissionController::class, 'index'])->name('permissions.view');
+    Route::get('/permissoes/cadastro', [App\Http\Controllers\Admin\PermissionController::class, 'create'])->name('permissions.create');
+    Route::get('/permissoes/{id}', [App\Http\Controllers\Admin\PermissionController::class, 'edit'])->name('permissions.edit');
+    Route::post('/permissoes', [App\Http\Controllers\Admin\PermissionController::class, 'store'])->name('permissions.store');
+    Route::put('/permissoes/{id}', [App\Http\Controllers\Admin\PermissionController::class, 'update'])->name('permissions.update');
+    Route::delete('/permissoes/{id}', [App\Http\Controllers\Admin\PermissionController::class, 'destroy'])->name('permissions.delete');
 
 
     ############## PERFIS (ROLES) ###############
-    Route::get('/perfis', [App\Http\Controllers\RoleController::class, 'index'])->name('roles.view');
-    Route::get('/perfis/cadastro', [App\Http\Controllers\RoleController::class, 'create'])->name('roles.create');
-    Route::get('/perfis/{id}', [App\Http\Controllers\RoleController::class, 'edit'])->name('roles.edit');
-    Route::post('/perfis', [App\Http\Controllers\RoleController::class, 'store'])->name('roles.store');
-    Route::put('/perfis/{id}', [App\Http\Controllers\RoleController::class, 'update'])->name('roles.update');
-    Route::delete('/perfis/{id}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.delete');
+    Route::get('/perfis', [App\Http\Controllers\Admin\RoleController::class, 'index'])->name('roles.view');
+    Route::get('/perfis/cadastro', [App\Http\Controllers\Admin\RoleController::class, 'create'])->name('roles.create');
+    Route::get('/perfis/{id}', [App\Http\Controllers\Admin\RoleController::class, 'edit'])->name('roles.edit');
+    Route::post('/perfis', [App\Http\Controllers\Admin\RoleController::class, 'store'])->name('roles.store');
+    Route::put('/perfis/{id}', [App\Http\Controllers\Admin\RoleController::class, 'update'])->name('roles.update');
+    Route::delete('/perfis/{id}', [App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.delete');
 
     ############## USUARIOS ###############
-     Route::get('/usuarios', [App\Http\Controllers\UserController::class, 'index'])->name('users.view');
-     Route::get('/usuarios/cadastro', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
-     Route::get('/usuarios/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
-     Route::post('/usuarios', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-     Route::put('/usuarios/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
-     Route::delete('/usuarios/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
+     Route::get('/usuarios', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.view');
+     Route::get('/usuarios/cadastro', [App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
+     Route::get('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('users.edit');
+     Route::post('/usuarios', [App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
+     Route::put('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('users.update');
+     Route::delete('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.delete');
 
 });
 
