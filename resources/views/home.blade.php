@@ -10,6 +10,9 @@
 <div class="row">
     <div class="col-lg-3 col-6">
 
+        @include('shared.success-message')
+        @include('shared.error-message')
+
         <div class="small-box bg-info">
             <div class="inner">
                 <h3>150</h3>
