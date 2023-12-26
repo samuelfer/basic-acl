@@ -76,26 +76,6 @@
 
 @section('js')
 
-    @if(session('successDel'))   
-        <script>
-            Swal.fire({
-                title: "Excluído!",
-                text: <?= session('successDel')  ?>,
-                icon: "success"
-            });
-        </script>
-    @endif
-
-    @if(session('errorDel'))   
-        <script>
-            Swal.fire({
-                title: "Atenção!",
-                text: '<?= session('errorDel')  ?>',
-                icon: "warning"
-            });
-        </script>
-    @endif
-
     <script>
 
         $(function () {
