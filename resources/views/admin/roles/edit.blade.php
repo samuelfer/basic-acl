@@ -43,17 +43,16 @@
 
                 </div>
 
-                <div class="card card-default">
+                <div class="card card-default container-fluid">
                     <div class="card-header">
                         <h3 class="card-title">Associar permissões ao perfil</h3>
                     </div>
                     <select multiple="multiple" size="10" name="permissions[]"
                         title="permissions[]" id="permissions">
-                        
-                        @foreach($permissions as $permission)
-                            <option @if (in_array($permission->id, $idsPermissionsRoles )) selected @endif 
-                                value="{{ $permission->id }}">{{ $permission->name }}</option>
-                        @endforeach
+                            @foreach($permissions as $permission)
+                                <option @if (in_array($permission->id, $idsPermissionsRoles )) selected @endif 
+                                    value="{{ $permission->id }}">{{ $permission->name }}</option>
+                            @endforeach
                     </select>
                 </div>
 
