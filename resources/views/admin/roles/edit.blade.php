@@ -51,9 +51,8 @@
                         title="permissions[]" id="permissions">
                         
                         @foreach($permissions as $permission)
-                            @foreach($role->permissions as $rolePermission)
-                                <option {{ $rolePermission->id == $permission->id ? 'selected' : '' }} value="{{ $permission->id }}">{{ $permission->name }}</option>
-                            @endforeach
+                            <option @if (in_array($permission->id, $idsPermissionsRoles )) selected @endif 
+                                value="{{ $permission->id }}">{{ $permission->name }}</option>
                         @endforeach
                     </select>
                 </div>

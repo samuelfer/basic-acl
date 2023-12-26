@@ -28,8 +28,8 @@ class StoreUpdateUser extends FormRequest
 
         if ($this->method() === 'PUT') {
             $rules = [
-                'name' => 'required|min:3|max:255|unique:users,name,{$this->id},id',
-                'email' => 'required|email|unique:users,email,{$this->id},id'
+                'name' => 'required|min:3|max:255|unique:users,name,'.$this->id.',id',
+                'email' => 'required|email|unique:users,email,'.$this->id.',id'
             ];
         }
 
