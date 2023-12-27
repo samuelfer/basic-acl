@@ -315,7 +315,6 @@ return [
             'text'        => 'Home',
             'url'         => '/home',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
             'label_color' => 'success',
         ],
         ['header' => 'Configurações'],
