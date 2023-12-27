@@ -51,6 +51,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::post('/usuarios', [App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
     Route::put('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('users.update');
     Route::delete('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.delete');
+    Route::get('/meu-perfil/{id}', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('users.show');
+
 
    ############## USUARIOS ###############
    Route::get('/alterar-senha', [App\Http\Controllers\Admin\AlterPasswordController::class, 'index'])->name('password.index');

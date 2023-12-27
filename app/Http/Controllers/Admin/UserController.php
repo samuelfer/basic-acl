@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
 use App\Models\Role;
-use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -52,7 +52,16 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('home')->with('error', 'Registro não encontrado!');
+        }
+
+        if (Auth::user()->id != $id) {
+            return redirect()->route('home')->with('error', 'Usuário logado não pode editar os dados!');
+        }
+    
+        return view('admin.profile.show', compact('user'));
     }
 
     /**

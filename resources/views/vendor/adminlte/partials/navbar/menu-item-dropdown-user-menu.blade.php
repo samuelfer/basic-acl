@@ -61,6 +61,24 @@
         @endif
 
         {{-- User menu footer --}}
+        @can('users.show')
+            <li class="user-footer">
+                <a class="btn btn-default btn-flat float-right @if(!$profile_url) btn-block @endif"  
+                    href="{{route('users.show', Auth::user()->id)}}">
+                    <i class="far fa-circle nav-icon text-green"></i>
+                    Meus dados
+                </a>
+            </li>
+        @endcan    
+        @can('password.store')
+            <li class="user-footer">
+                <a class="btn btn-default btn-flat float-right @if(!$profile_url) btn-block @endif"  
+                    href="{{route('password.store')}}">
+                    <i class="fa fa-fw fa-cog text-blue"></i>
+                    Alterar senha
+                </a>
+            </li>
+        @endcan
         <li class="user-footer">
             @if($profile_url)
                 <a href="{{ $profile_url }}" class="btn btn-default btn-flat">
@@ -80,15 +98,6 @@
                 {{ csrf_field() }}
             </form>
         </li>
-        @can('password.store')
-        <li class="user-footer">
-            <a class="btn btn-default btn-flat float-right @if(!$profile_url) btn-block @endif"  
-                href="{{route('password.store')}}">
-                <i class="fa fa-fw fa-cog text-blue"></i>
-                Alterar senha
-            </a>
-        </li>
-        @endcan
     </ul>
 
 </li>
