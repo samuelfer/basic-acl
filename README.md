@@ -16,5 +16,5 @@ Esta é uma aplicação ACL básica com controle de usuários, permissões e per
   <img src="https://github.com/samuelfer/basic-acl/blob/main/imagens/dashboard.png">
   <img src="https://github.com/samuelfer/basic-acl/blob/main/imagens/permissions.png">
   <img src="https://github.com/samuelfer/basic-acl/blob/main/imagens/roles.png">
-  <img src="https://github.com/samuelfer/basic-acl/blob/main/imagens/roles_users.png">
+  <img src="https://github.com/samuelfer/basic-acl/blob/main/imagens/user_roles.png">
   <img src="https://github.com/samuelfer/basic-acl/blob/main/imagens/permissions_roles.png">
