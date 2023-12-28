@@ -2,6 +2,15 @@
 
 @section('title', 'Editar Usuário')
 
+@section('adminlte_css')
+    <style>
+        .select2-selection__choice {
+            background-color: #007bff!important;
+        }
+    </style>   
+
+@endsection
+
 @section('content_header')
 <h3></h3>
 @stop
