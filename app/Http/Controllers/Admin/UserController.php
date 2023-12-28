@@ -110,12 +110,13 @@ class UserController extends Controller
             }
 
             $dados = $request->all();
-
+            
             if(!$dados['password']){
                 $dados['password'] = $user->password;
             }
 
             $user->update($dados);
+            $user->roles()->sync($request->roles);
 
             return redirect()->route('users.view')->with('success', 'Registro salvo com sucesso!');
         } catch (Exception $e) {
