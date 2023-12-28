@@ -36,7 +36,7 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <div class="row mb-3">
+                            <div class="row mb-4">
                                 <form action="{{ route("users.save-image") }}" method="post"  enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" value="{{ $user->id }}" name="id">
