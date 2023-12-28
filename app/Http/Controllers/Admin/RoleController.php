@@ -99,7 +99,7 @@ class RoleController extends Controller
             return redirect()->back()->with('errorDel', 'Registro não encontrado!');
         }
 
-        if ($role->permissions()->count() > 0) {
+        if ($role->permissions()->count() > 0 || $role->name == 'master') {
             return redirect()->back()->with('errorDel', 'Registro não pode ser deletado!'); 
         }
 
