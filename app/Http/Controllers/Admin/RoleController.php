@@ -8,6 +8,7 @@ use App\Models\Permission;
 use App\Models\Role;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
@@ -57,6 +58,10 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
+        if (!Auth::user()->is_admin) {
+            return redirect()->route('roles.view')->with('error', 'O usuário logado não pode editar perfis!');
+        }
+        
         $role = Role::find($id);
         if (!$role) {
             return redirect()->route('roles.view')->with('error', 'Registro não encontrado!');
@@ -76,6 +81,10 @@ class RoleController extends Controller
     public function update(StoreUpdateRole $request, string $id)
     {
         try {
+            if (!Auth::user()->is_admin) {
+                return redirect()->route('roles.view')->with('error', 'O usuário logado não pode editar perfis!');
+            }
+
             $role = Role::find($id);
             $data = $request->all();
 
@@ -94,6 +103,10 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Auth::user()->is_admin) {
+            return redirect()->route('roles.view')->with('error', 'O usuário logado não pode excluir perfis!');
+        }
+
         $role = Role::find($id);
         if (!$role) {
             return redirect()->back()->with('errorDel', 'Registro não encontrado!');

@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePermission;
 use App\Models\Permission;
+use App\Models\User;
 use Exception;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PermissionController extends Controller
 {
@@ -54,6 +55,10 @@ class PermissionController extends Controller
      */
     public function edit(string $id)
     {
+        if (!Auth::user()->is_admin) {
+            return redirect()->route('permissions.view')->with('error', 'O usuário logado não pode editar permissões!');
+        }
+
         $permission = Permission::find($id);
         if (!$permission) {
             return redirect()->route('permissions.view')->with('error', 'Registro não encontrado!');
@@ -67,6 +72,10 @@ class PermissionController extends Controller
     public function update(StoreUpdatePermission $request, string $id)
     {
         try {
+            if (!Auth::user()->is_admin) {
+                return redirect()->route('permissions.view')->with('error', 'O usuário logado não pode editar permissões!');
+            }
+            
             $permission = Permission::find($id);
             $data = $request->all();
 
@@ -84,6 +93,10 @@ class PermissionController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Auth::user()->is_admin) {
+            return redirect()->route('permissions.view')->with('error', 'O usuário logado não pode excluir permissões!');
+        }
+
         $permission = Permission::find($id);
      
         if (!$permission) {

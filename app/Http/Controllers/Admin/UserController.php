@@ -75,6 +75,10 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+        if (!Auth::user()->is_admin) {
+            return redirect()->route('users.view')->with('error', 'O usuário logado não pode editar usuários!');
+        }
+
         $user = User::find($id);
         if (!$user) {
             return redirect()->route('users.view')->with('error', 'Registro não encontrado!');
@@ -96,6 +100,10 @@ class UserController extends Controller
     public function update(StoreUpdateUser $request, string $id)
     {
         try {
+            if (!Auth::user()->is_admin) {
+                return redirect()->route('users.view')->with('error', 'O usuário logado não pode editar usuários!');
+            }
+            
             $user = User::find($id);
             if (!$user) {
                 return redirect()->route('users.view')->with('error', 'Registro não encontrado!');
@@ -120,6 +128,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Auth::user()->is_admin) {
+            return redirect()->route('users.view')->with('error', 'O usuário logado não pode excluir usuários!');
+        }
+
         $user = User::find($id);
         if (!$user) {
             return redirect()->route('users.view')->with('errorDel', 'Registro não encontrado!');
