@@ -3,12 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateImageProfile;
 use App\Http\Requests\StoreUpdateUser;
 use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+
+
 
 class UserController extends Controller
 {
@@ -91,6 +97,10 @@ class UserController extends Controller
     {
         try {
             $user = User::find($id);
+            if (!$user) {
+                return redirect()->route('users.view')->with('error', 'Registro não encontrado!');
+            }
+
             $dados = $request->all();
 
             if(!$dados['password']){
@@ -121,5 +131,68 @@ class UserController extends Controller
 
         $user->delete();
         return redirect()->route('users.view')->with('successDel', 'Registro deletado com sucesso!');
+    }
+
+    public function saveImage(StoreUpdateImageProfile $request)
+    {
+        $user = User::find($request->id);
+        $imagemOld = $user->image;
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Registro não encontrado!');
+        }
+
+        try {
+
+            if($request->hasFile('image')) {
+                // Get filename with the extension
+                $filenameWithExt = Str::of($request->file('image')->getClientOriginalName());
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $request->file('image')->getClientOriginalExtension();
+                // Filename to store
+                $fileNameToStore= $user->id. $filename.'_'.time().'.'.$extension;
+
+                $path = storage_path('uploads/users_image');
+
+                if (!file_exists($path)) {
+                    mkdir($path, 0777, true);
+                }
+        
+                // Upload Image
+                $request->file('image')->storeAs('public/uploads/users_image', $fileNameToStore);
+            
+                $data['image'] = $fileNameToStore;
+
+                $imageManager = new ImageManager(new Driver());
+                
+                $image = $imageManager->read(storage_path('app/public/uploads/users_image/'). $data['image']);
+                
+                $image->resize(300, 200);
+                $image->save(storage_path('uploads/users_image/'. $data['image']));
+                $data['image'] = 'uploads/users_image/'. $data['image'];
+                $user->update($data);
+
+                if (!empty($imagemOld)) {
+                    $this->fileDestroy($imagemOld);
+                }
+                $fileNameToStore =  $user->image;
+            }
+            
+            return redirect()->back()->with('success', 'Registro salvo com sucesso!');
+
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Ocorreu um erro ao tentar salvar o registro!');
+        }
+    }
+
+    public function fileDestroy(string $filename)
+    {
+        $path = storage_path().'/app/public/'.$filename;
+
+        if (file_exists($path)) {
+            unlink($path);
+        }  
     }
 }

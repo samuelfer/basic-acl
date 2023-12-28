@@ -2,6 +2,25 @@
 
 @section('title', 'Meus dados')
 
+@section('adminlte_css')
+    <style>
+        /* Esconde o input */
+        input[type='file'] {
+            display: none
+        }
+
+        /* Aparência que terá o seletor de arquivo */
+        .upload-image > label {
+            background-color: #3498db;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            margin: 10px;
+            padding: 6px 20px
+        }
+    </style>    
+@stop
+
 @section('content_header')
 <h3></h3>
 @stop
@@ -12,21 +31,47 @@
         <div class="row">
             <div class="col-md-3">
 
+                @include('shared.success-message')
+                @include('shared.error-message')
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle"
-                                src="https://adminlte.io/themes/v3/dist/img/user4-128x128.jpg"
-                                alt="User profile picture">
+                            <div class="row mb-3">
+                                <form action="{{ route("users.save-image") }}" method="post"  enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" value="{{ $user->id }}" name="id">
+                                    @if (isset($user->image) && !empty($user->image))
+                                        <img id="preview" src="{{ asset('storage/'.$user->image) }}"
+                                        class="profile-user-img img-fluid img-circle" alt="Foto do usuário">
+                                    @endif
+
+                                        <img id="preview" src="#" alt="Foto do usuário" class="profile-user-img img-fluid img-circle mt-3" style="display:none;"/>
+                                    <div class="mt-2 upload-image">
+                                        <label for='selectImage'>Selecionar imagem</label>
+                                        <input type="file" class="form-control" name="image" @error('image') is-invalid
+                                            @enderror id="selectImage">
+                                    </div>
+                    
+                                    @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+
+                                    <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                                    <p class="text-muted text-center">{{ $user->email }}</p>
+                                    <ul class="list-group list-group-unbordered mb-3">
+                                        <li class="list-group-item">
+                                            <b>Cadastrado em:</b> <a class="float-right">{{ $user->created_at->format('d-m-Y')}}</a>
+                                        </li>
+                                    </ul>
+
+
+                                    <button type="submit" class="btn btn-success btn-block mt-2">Salvar</button>
+                                </form>
+                            </div>
+
                         </div>
-                        <h3 class="profile-username text-center">{{ $user->name }}</h3>
-                        <p class="text-muted text-center">{{ $user->email }}</p>
-                        <ul class="list-group list-group-unbordered mb-3">
-                            <li class="list-group-item">
-                                <b>Cadastrado em:</b> <a class="float-right">{{ $user->created_at->format('d-m-Y')}}</a>
-                            </li>
-                        </ul>
-                        <a href="#" class="btn btn-primary btn-block"><b>Alterar foto</b></a>
                     </div>
 
                 </div>
@@ -49,7 +94,7 @@
                         <div class="tab-content">
 
                             <div class="active tab-pane" id="settings">
-                
+
                                 <div class="post">
                                     <div class="user-block">
                                         <div class="card card-primary">
@@ -80,7 +125,7 @@
 
                                                 <div class="form-group row">
                                                     <div class="col-sm-10">
-                                                        <button type="submit" class="btn btn-danger">Salvar</button>
+                                                        <button type="submit" class="btn btn-success">Salvar</button>
                                                         <a href="{{route('home')}}" type="button"
                                                             class="btn btn-default">Cancelar</a>
                                                     </div>
@@ -89,7 +134,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                   
+
                             </div>
 
                             <div class="tab-pane" id="activity">
@@ -139,4 +184,19 @@
 
     </div>
 </section>
+@stop
+
+@section('js')
+
+<script>
+selectImage.onchange = evt => {
+    preview = document.getElementById('preview');
+    preview.style.display = 'block';
+    const [file] = selectImage.files
+    if (file) {
+        preview.src = URL.createObjectURL(file)
+    }
+}
+</script>
+
 @stop

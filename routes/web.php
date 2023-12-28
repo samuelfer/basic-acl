@@ -52,6 +52,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::put('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('users.update');
     Route::delete('/usuarios/{id}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.delete');
     Route::get('/meu-perfil/{id}', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('users.show');
+   
+   
+    Route::post('/users.save-image', [App\Http\Controllers\Admin\UserController::class, 'saveImage'])->name('users.save-image');
 
 
    ############## USUARIOS ###############
