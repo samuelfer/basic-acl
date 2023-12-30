@@ -61,7 +61,6 @@ class User extends Authenticatable
                 return !!$roles->intersect($this->roles)->count();
             }
         }
-        dd($this->roles->contains('name', $roles));
         return $this->roles->contains('name', $roles);
     }
 
