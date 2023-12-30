@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
+        if ($this->app->runningInConsole()) return;
+
         $permissions = Permission::with('roles')->get();
 
         foreach ($permissions as $permission) {
