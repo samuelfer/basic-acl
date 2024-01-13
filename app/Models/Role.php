@@ -20,6 +20,8 @@ class Role extends Model
 
     public function getActivitylogOptions(): LogOptions
     {
-        return LogOptions::defaults()->logOnly(['name', 'description']);
+        return LogOptions::defaults()
+        ->logOnly(['name', 'description'])
+        ->dontSubmitEmptyLogs();
     }
 }
