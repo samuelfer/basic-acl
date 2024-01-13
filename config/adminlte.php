@@ -340,6 +340,12 @@ return [
                     'icon' => 'fas fa-fw fa-lock',
                     'can'  => 'permissions.view'
                 ],
+                [
+                    'text' => 'Auditoria',
+                    'route'  => 'logs.view',
+                    'icon' => 'nav-icon fas fa-book',
+                    'can'  => 'logs.view'
+                ],
             ],
         ],
     ],

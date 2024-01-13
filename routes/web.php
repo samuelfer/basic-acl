@@ -61,5 +61,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
    Route::get('/alterar-senha', [App\Http\Controllers\Admin\AlterPasswordController::class, 'index'])->name('password.index');
    Route::post('/alterar-senha', [App\Http\Controllers\Admin\AlterPasswordController::class, 'store'])->name('password.store');
 
+   ############## AUDITORIA ###############
+   Route::get('/auditoria', [App\Http\Controllers\Admin\AcitivityLogController::class, 'index'])->name('logs.view');
+
 });
 
